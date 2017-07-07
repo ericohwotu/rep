@@ -194,8 +194,19 @@ def get_version(x):
         incr = str(1).zfill(len(num[1]))
         newVal = int(num[1])+int(incr)
         return ".".join((num[0],str(newVal)))
+
         
-    
+def print_help():
+    print("commands are a s follows:")
+    print("   rep --create <projectname>: creates a project of <projectname> in the rep folder")
+    print("   rep --save <projectname>: saves all files to a temporary location in the rep folder")
+    print("   rep --add <projectname> <filename>: adds the file to the project manifest file")
+    print("   rep --commit <projectname>: commits all files into the final project directory")
+    print("   rep --root <projectname> <rootdirectory>: adds the working directory")
+    print("   rep --target <projectname> <rootdirectory>: sets te final project directory")
+    None
+
+
 """ print information to console in verbose mode """
 def display(s):
     print(s)
@@ -204,7 +215,7 @@ def display(s):
 if __name__ == "__main__":
 
     if sys.argv[1] == "--create":
-        create_manifest(sys.argv[2], sys.argv[3])
+        create_manifest(sys.argv[2])
     elif sys.argv[1] == "--save":
         save(sys.argv[2])
     elif sys.argv[1] == "--commit":
@@ -220,6 +231,8 @@ if __name__ == "__main__":
     elif sys.argv[1] == "--file":
         path = get_p(3)
         add_file(sys.argv[2],path)
+    elif sys.argv[1] == "--help":
+        print_help()
     
     
         
